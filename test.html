@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <div class="box" id="box"></div>
+</head>
+<style>
+  body {
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  .box {
+    width: 100%;
+    height: 100%;
+    background: #000000;
+  }
+  .box .star {
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    box-shadow: 0 0 10px #fff;
+    background: linear-gradient(10deg, #5395ff, rgba(0, -58, 240, 0));
+    animation: hide 5s infinite;
+    transform: rotate(45deg);
+  }
+  .box .star2 {
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    box-shadow: 0 0 10px #fff;
+    background: linear-gradient(10deg, #5395ff, rgba(0, -58, 240, 0));
+    animation: hide2 5s infinite;
+  }
+  @keyframes hide {
+    100% {
+      top: 120vh;
+      left: -100vh;
+      display: none;
+    }
+  }
+  @keyframes hide2 {
+    100% {
+      top: 120vh;
+      display: none;
+    }
+  }
+</style>
+<script>
+  let box = document.querySelector('#box');
+  function create() {
+    let div = document.createElement('div');
+    
+    let t = Math.floor(((Math.random()*10)*10));
+    let l = Math.floor(((Math.random()*10)*10));
+    console.log(new Date().getSeconds)
+    if (new Date().getSeconds() % 2 === 0) {
+      div.className = 'star2'
+    } else{
+      div.className = 'star'
+    }
+    div.style.top = `${t}vh`;
+    div.style.left = `${l}vw`;
+    box.appendChild(div);
+  }
+  setInterval(() => {
+    create()
+  }, 0);
+</script>
+<body>
+</body>
+</html>
